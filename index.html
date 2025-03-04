@@ -57,6 +57,37 @@
             font-size: 1rem;
         }
 
+        /* Quantity field styling */
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .quantity-btn {
+            background: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .quantity-btn:hover {
+            background: #ff4a3d;
+        }
+
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            margin: 0 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
         /* Button styling */
         button {
             width: 100%;
@@ -103,7 +134,11 @@
 
             <!-- Quantity Field -->
             <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" min="1" required>
+            <div class="quantity-container">
+                <button type="button" class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                <input type="number" id="quantity" name="quantity" class="quantity-input" value="1" min="1" required>
+                <button type="button" class="quantity-btn" onclick="increaseQuantity()">+</button>
+            </div>
 
             <!-- Submit Button -->
             <button type="submit">Place Order</button>
@@ -114,5 +149,22 @@
             Sajid Bhai apke liye demo form
         </div>
     </div>
+
+    <script>
+        // JavaScript for Quantity Increase/Decrease
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        }
+
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+    </script>
 </body>
 </html>
